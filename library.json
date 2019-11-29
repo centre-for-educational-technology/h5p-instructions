@@ -3,7 +3,7 @@
   "description": "Create instructions for different tasks",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 10,
+  "patchVersion": 12,
   "runnable": 1,
   "author": "Haridustehnoloogiakeskus",
   "license": "cc-by-sa",
@@ -13,10 +13,10 @@
     "minorVersion": 0
   },
   "preloadedJs": [
-    { "path": "" }
+    { "path": "src/scripts/instructions.js" }
   ],
   "preloadedCss": [
-    { "path": "" }
+    { "path": "src/styles/instructions.css" }
   ],
   "editorDependencies": [
     {

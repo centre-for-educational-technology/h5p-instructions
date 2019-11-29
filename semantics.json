@@ -1,0 +1,85 @@
+[ 
+  { 
+    "label": "Instruction description", 
+    "name": "description", 
+    "type": "text", 
+    "default": "Perform the tasks in the order they appear.", 
+    "description": "Describe, how the user should follow the instructions."
+  }, 
+  {
+    "label": "Difficulty",
+    "name": "difficulty",
+    "type": "select",
+    "options": [
+      {
+        "value": "hard",
+        "label": "Hard"
+      },
+      {
+        "value": "medium",
+        "label": "Medium"
+      },
+      {
+        "value": "easy",
+        "label": "Easy"
+      }
+    ]
+  },
+  {
+    "label": "Cover picture",
+    "name": "cover",
+    "type": "image",
+    "optional": true
+  },
+  {
+    "label": "Picture alternative text",
+    "name": "cover_alt",
+    "type": "text",
+    "optional": "true"
+  },
+  {
+    "label": "Instruction steps",
+    "name": "steps",
+    "type": "list",
+    "min": 1,
+    "widgets": [
+      {
+        "name": "VerticalTabs",
+        "label": "Default"
+      }
+    ],
+    "entity": "step",
+    "field": {
+      "label": "Step",
+      "name": "step",
+      "type": "group",
+      "fields": [
+        {
+          "label": "Tekst",
+          "name": "title",
+          "type": "text",
+          "description": "General text"
+        },
+        {
+          "label": "What needs special attention",
+          "name": "attention",
+          "type": "text",
+          "description": "For example: \"Wait for the green light!\"",
+          "optional": true
+        },
+        {
+          "label": "Picture",
+          "name": "picture",
+          "type": "image",
+          "optional": true
+        },
+        {
+          "label": "Picture alternative text",
+          "name": "cover_alt",
+          "type": "text",
+          "optional": "true"
+        }
+      ]
+    }
+  }
+]

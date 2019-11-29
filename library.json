@@ -1,0 +1,28 @@
+{
+  "title": "Instructions",
+  "description": "Create instructions for different tasks",
+  "majorVersion": 1,
+  "minorVersion": 0,
+  "patchVersion": 10,
+  "runnable": 1,
+  "author": "Haridustehnoloogiakeskus",
+  "license": "cc-by-sa",
+  "machineName": "H5P.Instructions",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 0
+  },
+  "preloadedJs": [
+    { "path": "" }
+  ],
+  "preloadedCss": [
+    { "path": "" }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.VerticalTabs",
+      "majorVersion": 1,
+      "minorVersion": 3
+    }
+  ] 
+}

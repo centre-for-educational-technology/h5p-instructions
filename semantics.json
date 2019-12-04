@@ -1,4 +1,11 @@
 [ 
+  {
+    "label": "Instruction title",
+    "name": "title",
+    "type": "text",
+    "default": "How to do something",
+    "description": "Give an easily understandable title to the instructions. This title is shown on the title screen."
+  },
   { 
     "label": "Instruction description", 
     "name": "description", 

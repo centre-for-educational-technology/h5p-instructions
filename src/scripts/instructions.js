@@ -4,8 +4,6 @@ var $ = H5P.jQuery;
 function constructor(options, id) {
   this.options = options;
   this.id = id;
-
-  this.step = 0;
   
   //set default values
   // ...
@@ -23,10 +21,14 @@ function constructor(options, id) {
       $notes.append('<li>' + note.text + '</li>');
     });
 
+    this.showImage(this.options.steps[this.step].picture, $display);
+  }
+
+  this.showImage = (image, $display) => {
     $image = $display.find('.image');
     $image.empty();
-    if (this.options.steps[this.step].picture != null) {
-      $image.append('<img src="' + H5P.getPath(this.options.steps[this.step].picture.path, this.id) + '">');
+    if (image != null) {
+      $image.append('<img src="' + H5P.getPath(image.path, this.id) + '">');
     }
   }
 
@@ -48,20 +50,52 @@ function constructor(options, id) {
      this.updateStep(step, $container);
     }
   }
+
+  this.startSteps = ($container) => {
+    var that = this;
+
+    this.step = 0;
+    $display = $container.find('.step-display');
+
+    $title = $display.find('.title');
+    $title.empty();
+    $title.append('<h2></h2>');
+
+    $buttons = $container.find('.buttons');
+    $buttons.empty().append('<button class="prev">Previous</button><button class="next">Next</button>');
+    $buttons.find('.prev').click(function () { that.prevStep($container); });
+    $buttons.find('.next').click(function () { that.nextStep($container); });
+
+    this.showStep($container);
+  }
 }
 
 constructor.prototype.attach = function ($container) {
   var that = this;
+
   $container.addClass("h5p-instructions");
   //$container.append('<p>' + JSON.stringify(this.options) + "</p>");
   $container.append('<div class="step-display"><div class="title"><h2></h2></div><div class="image"></div><div class="notes"><ul></ul></div></div>')
-  
-  $container.append('<div class="buttons"><button class="prev">AAAAAAAA</button><button class="next">EEEEEEEE</button></div>');
-  $buttons = $container.find('.buttons');
-  $buttons.find('.prev').click(function () { that.prevStep($container); });
-  $buttons.find('.next').click(function () { that.nextStep($container); });
+  $container.append('<div class="buttons"></div>');
 
-  this.showStep($container);
+  $display = $container.find('.step-display');
+
+  this.showImage(this.options.cover, $display);
+
+  $title = $display.find('.title');
+  $title.find('h2').append(this.options.title);
+  $title.append('<p>Autor: ...ei tea praegu...</p>');
+
+
+
+  $notes = $display.find('.notes ul');
+  $notes.append('<li>Raskusaste: ' + this.options.difficulty + '</li>');
+  $notes.append('<li>Samme: ' + this.options.steps.length.toString() + '</li>');
+  $notes.append('<li>Aeg: ' + '...ei ole öeldud...' + '</li>');
+
+  $buttons = $container.find('.buttons');
+  $buttons.append('<button class="start">start</button>');
+  $buttons.find('.start').click(function () { that.startSteps($container); });  
 }
 
 H5P.Instructions = constructor;

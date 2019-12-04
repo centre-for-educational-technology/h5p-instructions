@@ -11,14 +11,22 @@ function constructor(options, id) {
   // ...
 
   this.showStep = ($container) => {
+    let step = this.options.steps[this.step];
+
     $display = $container.find('.step-display');
 
-    $display.find('.text').empty().append('<h2>' + this.options.steps[this.step].title + '</h2>');
+    $display.find('.title h2').empty().append(step.title);
 
-    $display.find('.special').empty().append('<p>' + this.options.steps[this.step].attention + '</p>');
+    $notes = $display.find('.notes ul');
+    $notes.empty();
+    step.notes.forEach(note => {
+      $notes.append('<li>' + note.text + '</li>');
+    });
 
+    $image = $display.find('.image');
+    $image.empty();
     if (this.options.steps[this.step].picture != null) {
-      $display.find('.image').empty().append('<img src="' + H5P.getPath(this.options.steps[this.step].picture.path, this.id) + '">');
+      $image.append('<img src="' + H5P.getPath(this.options.steps[this.step].picture.path, this.id) + '">');
     }
   }
 
@@ -46,7 +54,7 @@ constructor.prototype.attach = function ($container) {
   var that = this;
   $container.addClass("h5p-instructions");
   //$container.append('<p>' + JSON.stringify(this.options) + "</p>");
-  $container.append('<div class="step-display"><div class="text"></div><div class="image"></div><div class="special"></div></div>')
+  $container.append('<div class="step-display"><div class="title"><h2></h2></div><div class="image"></div><div class="notes"><ul></ul></div></div>')
   
   $container.append('<div class="buttons"><button class="prev">AAAAAAAA</button><button class="next">EEEEEEEE</button></div>');
   $buttons = $container.find('.buttons');

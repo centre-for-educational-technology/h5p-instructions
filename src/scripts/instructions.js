@@ -13,7 +13,8 @@ function constructor(options, id) {
 
     $display = $container.find('.step-display');
 
-    $display.find('.title h2').empty().append(step.title);
+    let stepprefix = this.options.transl_step.replace('@step', this.step + 1);
+    $display.find('.title h2').empty().append(stepprefix + ' ' + step.title);
 
     $notes = $display.find('.notes ul');
     $notes.empty();
@@ -62,7 +63,9 @@ function constructor(options, id) {
     $title.append('<h2></h2>');
 
     $buttons = $container.find('.buttons');
-    $buttons.empty().append('<button class="prev">Previous</button><button class="next">Next</button>');
+    $buttons.empty();
+    $buttons.append('<button class="prev">' + this.options.transl_prev + '</button>');
+    $buttons.append('<button class="next">' + this.options.transl_next + '</button>');
     $buttons.find('.prev').click(function () { that.prevStep($container); });
     $buttons.find('.next').click(function () { that.nextStep($container); });
 
@@ -84,17 +87,16 @@ constructor.prototype.attach = function ($container) {
 
   $title = $display.find('.title');
   $title.find('h2').append(this.options.title);
-  $title.append('<p>Autor: ...ei tea praegu...</p>');
 
 
 
   $notes = $display.find('.notes ul');
-  $notes.append('<li>Raskusaste: ' + this.options.difficulty + '</li>');
-  $notes.append('<li>Samme: ' + this.options.steps.length.toString() + '</li>');
-  $notes.append('<li>Aeg: ' + '...ei ole öeldud...' + '</li>');
+  $notes.append('<li>' + this.options.transl_difficulty + ' ' + this.options.difficulty + '</li>');
+  $notes.append('<li>' + this.options.transl_steps + ' ' + this.options.steps.length.toString() + '</li>');
+  $notes.append('<li>' + this.options.transl_time + ' ' + '...ei ole öeldud...' + '</li>');
 
   $buttons = $container.find('.buttons');
-  $buttons.append('<button class="start">start</button>');
+  $buttons.append('<button class="start">' + this.options.transl_start + '</button>');
   $buttons.find('.start').click(function () { that.startSteps($container); });  
 }
 

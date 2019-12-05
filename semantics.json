@@ -107,5 +107,54 @@
         }
       ]
     }
+  },
+  {
+    "label": "Text for the start button",
+    "name": "transl_start",
+    "type": "text",
+    "default": "Start",
+    "common": true
+  },
+  {
+    "label": "Text for the previous button",
+    "name": "transl_prev",
+    "type": "text",
+    "default": "Previous",
+    "common": true
+  },
+  {
+    "label": "Text for the next button",
+    "name": "transl_next",
+    "type": "text",
+    "default": "Next",
+    "common": true
+  },
+  {
+    "label": "Text for difficulty",
+    "name": "transl_difficulty",
+    "type": "text",
+    "default": "Difficulty",
+    "common": true
+  },
+  {
+    "label": "Text for steps",
+    "name": "transl_steps",
+    "type": "text",
+    "default": "Steps",
+    "common": true
+  },
+  {
+    "label": "Text for time",
+    "name": "transl_time",
+    "type": "text",
+    "default": "Time",
+    "common": true
+  },
+  {
+    "label": "Text for each step. @step will be replaced with the step number.",
+    "name": "transl_step",
+    "type": "text",
+    "default": "Step @step: ",
+    "common": true
   }
 ]

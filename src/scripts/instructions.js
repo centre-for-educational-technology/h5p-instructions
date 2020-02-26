@@ -1,5 +1,6 @@
 var H5P = H5P || {};
 var $ = H5P.jQuery;
+var JoubelUI = H5P.JoubelUI;
 
 function constructor(options, id) {
   this.options = options;
@@ -19,7 +20,14 @@ function constructor(options, id) {
     $notes = $display.find('.notes ul');
     $notes.empty();
     step.notes.forEach(note => {
-      $notes.append('<li>' + note.text + '</li>');
+      var first;
+      if (note.needs_attention) {
+        first = '<li class="special">';
+      }
+      else {
+        first = '<li>'
+      }
+      $notes.append(first + note.text + '</li>');
     });
 
     this.showImage(this.options.steps[this.step].picture, $display);
@@ -64,10 +72,28 @@ function constructor(options, id) {
 
     $buttons = $container.find('.buttons');
     $buttons.empty();
-    $buttons.append('<button class="prev">' + this.options.transl_prev + '</button>');
-    $buttons.append('<button class="next">' + this.options.transl_next + '</button>');
-    $buttons.find('.prev').click(function () { that.prevStep($container); });
-    $buttons.find('.next').click(function () { that.nextStep($container); });
+
+    JoubelUI.createButton({
+      'class': 'prev',
+      'html': this.options.transl_prev,
+      'on': {
+        click: function() {
+          that.prevStep($container);
+        }
+      },
+      'appendTo': $buttons
+    });
+
+    JoubelUI.createButton({
+      'class': 'next',
+      'html': this.options.transl_next,
+      'on': {
+        click: function() {
+          that.nextStep($container);
+        }
+      },
+      'appendTo': $buttons
+    });
 
     this.showStep($container);
   }
@@ -96,8 +122,19 @@ constructor.prototype.attach = function ($container) {
   $notes.append('<li>' + this.options.transl_time + ' ' + '...ei ole öeldud...' + '</li>');
 
   $buttons = $container.find('.buttons');
-  $buttons.append('<button class="start">' + this.options.transl_start + '</button>');
-  $buttons.find('.start').click(function () { that.startSteps($container); });  
+  /*$buttons.append('<button class="start">' + this.options.transl_start + '</button>');
+  $buttons.find('.start').click(function () { that.startSteps($container); });*/
+
+  JoubelUI.createButton({
+    'class': 'start',
+    'html': this.options.transl_start,
+    'on': {
+      click: function() {
+        that.startSteps($container);
+      }
+    },
+    'appendTo': $buttons
+  });
 }
 
 H5P.Instructions = constructor;

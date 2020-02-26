@@ -2,3 +2,25 @@
   width: 400px;
   height: auto;
 }
+
+.h5p-instructions .image, .h5p-instructions .notes {
+  width: 50%;
+  display: inline-block;
+}
+
+.h5p-instructions .buttons {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.h5p-instructions .title {
+  margin-bottom: 15px;
+}
+
+.h5p-instructions li {
+  font-size: 1.5em;
+}
+
+.h5p-instructions li.special {
+  color: #f55;
+}

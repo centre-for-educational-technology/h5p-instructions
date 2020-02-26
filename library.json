@@ -12,6 +12,18 @@
     "majorVersion": 1,
     "minorVersion": 0
   },
+  "preloadedDependencies": [
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 5
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 3
+    }
+  ],
   "preloadedJs": [
     { "path": "src/scripts/instructions.js" }
   ],

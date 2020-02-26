@@ -6,16 +6,13 @@ function constructor(options, id) {
   this.options = options;
   this.id = id;
   
-  //set default values
-  // ...
-
   this.showStep = ($container) => {
     let step = this.options.steps[this.step];
 
     $display = $container.find('.step-display');
 
     let stepprefix = this.options.transl_step.replace('@step', this.step + 1);
-    $display.find('.title h2').empty().append(stepprefix + ' ' + step.title);
+    $display.find('.title h2').empty().append('<span>' + stepprefix + '</span><span>' + step.title + '</span>');
 
     $notes = $display.find('.notes ul');
     $notes.empty();
@@ -30,7 +27,9 @@ function constructor(options, id) {
       $notes.append(first + note.text + '</li>');
     });
 
-    this.showImage(this.options.steps[this.step].picture, $display);
+    $image = $display.find('.image');
+    $image.empty();
+    H5P.newRunnable(this.options.steps[this.step].visual, id, $image);
   }
 
   this.showImage = (image, $display) => {
@@ -103,7 +102,6 @@ constructor.prototype.attach = function ($container) {
   var that = this;
 
   $container.addClass("h5p-instructions");
-  //$container.append('<p>' + JSON.stringify(this.options) + "</p>");
   $container.append('<div class="step-display"><div class="title"><h2></h2></div><div class="image"></div><div class="notes"><ul></ul></div></div>')
   $container.append('<div class="buttons"></div>');
 
@@ -112,18 +110,16 @@ constructor.prototype.attach = function ($container) {
   this.showImage(this.options.cover, $display);
 
   $title = $display.find('.title');
-  $title.find('h2').append(this.options.title);
+  $title.find('h2').append('<span class="center">' + this.options.title + "</span>");
 
 
 
   $notes = $display.find('.notes ul');
-  $notes.append('<li>' + this.options.transl_difficulty + ' ' + this.options.difficulty + '</li>');
-  $notes.append('<li>' + this.options.transl_steps + ' ' + this.options.steps.length.toString() + '</li>');
-  $notes.append('<li>' + this.options.transl_time + ' ' + '...ei ole öeldud...' + '</li>');
+  $notes.append('<li class="statistic"><span>' + this.options.transl_difficulty + '</span><span>' + this.options.difficulty + '</span></li>');
+  $notes.append('<li class="statistic"><span>' + this.options.transl_steps + '</span><span>' + this.options.steps.length.toString() + '</span></li>');
+  $notes.append('<li class="statistic"><span>' + this.options.transl_time + '</span><span>' + this.options.time + '</span></li>');
 
   $buttons = $container.find('.buttons');
-  /*$buttons.append('<button class="start">' + this.options.transl_start + '</button>');
-  $buttons.find('.start').click(function () { that.startSteps($container); });*/
 
   JoubelUI.createButton({
     'class': 'start',

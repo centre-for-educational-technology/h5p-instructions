@@ -1,0 +1,97 @@
+[ 
+  {
+    "label": "Instruction title",
+    "default": "How to do something",
+    "description": "Give an easily understandable title to the instructions. This title is shown on the title screen."
+  },
+  { 
+    "label": "Instruction description",
+    "default": "Perform the tasks in the order they appear.", 
+    "description": "Describe, how the user should follow the instructions."
+  }, 
+  {
+    "label": "Difficulty",
+    "options": [
+      {
+        "label": "Hard"
+      },
+      {
+        "label": "Medium"
+      },
+      {
+        "label": "Easy"
+      }
+    ]
+  },
+  {
+    "label": "Time",
+    "description": "How much time it takes to complete instructions. Example: \"15 minutes\", \"2 hours\".",
+    "default": "30 min"
+  },
+  {
+    "label": "Cover picture"
+  },
+  {
+    "label": "Picture alternative text"
+  },
+  {
+    "label": "Instruction steps",
+    "entity": "step",
+    "field": {
+      "label": "Step",
+      "fields": [
+        {
+          "label": "Title",
+          "description": "Step title"
+        },
+        {
+          "label": "Notes",
+          "entity": "note",
+          "field": {
+            "label": "Note",
+            "fields": [
+              {
+                "label": "Text"
+              },
+              {
+                "label": "Special attention"
+              }
+            ]
+          }
+        },
+        {
+          "label": "Picture or video",
+          "description": "Use either a picture or a video to show what to do in this step."
+        }
+      ]
+    }
+  },
+  {
+    "label": "Text for the start button",
+    "default": "Start"
+  },
+  {
+    "label": "Text for the previous button",
+    "default": "Previous"
+  },
+  {
+    "label": "Text for the next button",
+    "default": "Next"
+  },
+  {
+    "label": "Text for difficulty",
+    "default": "Difficulty"
+  },
+  {
+    "label": "Text for steps",
+    "default": "Steps"
+  },
+  {
+    "label": "Text for time",
+    "default": "Time"
+  },
+  {
+    "label": "Text for each step. @step will be replaced with the step number.",
+    "default": "Step @step: "
+  }
+]

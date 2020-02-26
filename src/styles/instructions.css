@@ -6,6 +6,7 @@
 .h5p-instructions .image, .h5p-instructions .notes {
   width: 50%;
   display: inline-block;
+  vertical-align: middle;
 }
 
 .h5p-instructions .buttons {
@@ -14,13 +15,41 @@
 }
 
 .h5p-instructions .title {
-  margin-bottom: 15px;
+  padding: 15px 0px 15px 15px;
+}
+
+.h5p-instructions .title span.center {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.h5p-instructions .title span:nth-child(2) {
+  font-weight: normal;
+  margin-left: 40px;
 }
 
 .h5p-instructions li {
   font-size: 1.5em;
+  background-color: #fff;
+  padding: 5px 10px 5px 10px;
+  margin: 10px 15px 10px 15px;
+  list-style: none;
+}
+
+.h5p-instructions ul {
+  margin: 0;
+  padding: 0;
 }
 
 .h5p-instructions li.special {
   color: #f55;
+}
+
+.h5p-instructions li.statistic span:nth-child(2) {
+  float:right;
+}
+
+.h5p-instructions {
+  background-color: #eee;
 }

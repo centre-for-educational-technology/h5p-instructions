@@ -3,7 +3,7 @@
   "description": "Create instructions for different tasks",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 13,
+  "patchVersion": 14,
   "runnable": 1,
   "author": "Haridustehnoloogiakeskus",
   "license": "cc-by-sa",
@@ -22,6 +22,11 @@
       "machineName": "H5P.JoubelUI",
       "majorVersion": 1,
       "minorVersion": 3
+    },
+    {
+      "machineName": "H5P.Video",
+      "majorVersion": 1,
+      "minorVersion": 5
     }
   ],
   "preloadedJs": [

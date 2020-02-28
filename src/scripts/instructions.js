@@ -5,7 +5,7 @@ var JoubelUI = H5P.JoubelUI;
 function constructor(options, id) {
   this.options = options;
   this.id = id;
-  
+
   this.showStep = ($container) => {
     let step = this.options.steps[this.step];
 
@@ -16,20 +16,53 @@ function constructor(options, id) {
 
     $notes = $display.find('.notes ul');
     $notes.empty();
-    step.notes.forEach(note => {
-      var first;
-      if (note.needs_attention) {
-        first = '<li class="special">';
-      }
-      else {
-        first = '<li>'
-      }
-      $notes.append(first + note.text + '</li>');
-    });
+    if (step.notes != null) {
+      step.notes.forEach(note => {
+        var first;
+        if (note.needs_attention) {
+          first = '<li class="special">';
+        }
+        else {
+          first = '<li>'
+        }
+        $notes.append(first + note.text + '</li>');
+      });
+    }
 
     $image = $display.find('.image');
     $image.empty();
     H5P.newRunnable(this.options.steps[this.step].visual, id, $image);
+
+    var $buttons = $container.find('.buttons');
+    var that = this;
+    $buttons.empty();
+    if (this.options.steps.length > 1) {
+      if (this.step > 0) {
+        JoubelUI.createButton({
+          'class': 'prev',
+          'html': this.options.transl_prev,
+          'on': {
+            click: function() {
+              that.prevStep($container);
+            }
+          },
+          'appendTo': $buttons
+        });
+      }
+
+      if (this.step < this.options.steps.length - 1) {
+        JoubelUI.createButton({
+          'class': 'next',
+          'html': this.options.transl_next,
+          'on': {
+            click: function() {
+              that.nextStep($container);
+            }
+          },
+          'appendTo': $buttons
+        });
+      }
+    }
   }
 
   this.showImage = (image, $display) => {
@@ -60,39 +93,12 @@ function constructor(options, id) {
   }
 
   this.startSteps = ($container) => {
-    var that = this;
-
     this.step = 0;
     $display = $container.find('.step-display');
 
     $title = $display.find('.title');
     $title.empty();
     $title.append('<h2></h2>');
-
-    $buttons = $container.find('.buttons');
-    $buttons.empty();
-
-    JoubelUI.createButton({
-      'class': 'prev',
-      'html': this.options.transl_prev,
-      'on': {
-        click: function() {
-          that.prevStep($container);
-        }
-      },
-      'appendTo': $buttons
-    });
-
-    JoubelUI.createButton({
-      'class': 'next',
-      'html': this.options.transl_next,
-      'on': {
-        click: function() {
-          that.nextStep($container);
-        }
-      },
-      'appendTo': $buttons
-    });
 
     this.showStep($container);
   }

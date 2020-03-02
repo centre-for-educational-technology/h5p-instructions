@@ -16,7 +16,7 @@ function constructor(options, id) {
 
     $notes = $display.find('.notes ul');
     $notes.empty();
-    if (step.notes != null) {
+    if (step.notes) {
       step.notes.forEach(note => {
         var first;
         if (note.needs_attention) {
@@ -29,12 +29,9 @@ function constructor(options, id) {
       });
     }
 
-    $image = $display.find('.image');
-    $image.empty();
-    H5P.newRunnable(this.options.steps[this.step].visual, id, $image);
-
-    var $buttons = $container.find('.buttons');
+    this.showImage(this.options.steps[this.step].visual, $display);
     var that = this;
+    var $buttons = $container.find('.buttons');
     $buttons.empty();
     if (this.options.steps.length > 1) {
       if (this.step > 0) {
@@ -66,10 +63,16 @@ function constructor(options, id) {
   }
 
   this.showImage = (image, $display) => {
+    var that = this;
+
     $image = $display.find('.image');
     $image.empty();
+
     if (image != null) {
-      $image.append('<img src="' + H5P.getPath(image.path, this.id) + '">');
+      var runnable = H5P.newRunnable(image, id, $image);
+      runnable.on('loaded', function() {
+        H5P.trigger(that, 'resize');
+      });
     }
   }
 
@@ -112,13 +115,10 @@ constructor.prototype.attach = function ($container) {
   $container.append('<div class="buttons"></div>');
 
   $display = $container.find('.step-display');
-
   this.showImage(this.options.cover, $display);
 
   $title = $display.find('.title');
   $title.find('h2').append('<span class="center">' + this.options.title + "</span>");
-
-
 
   $notes = $display.find('.notes ul');
   $notes.append('<li class="statistic"><span>' + this.options.transl_difficulty + '</span><span>' + this.options.difficulty + '</span></li>');

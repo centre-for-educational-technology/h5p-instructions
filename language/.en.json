@@ -32,9 +32,6 @@
     "label": "Cover picture"
   },
   {
-    "label": "Picture alternative text"
-  },
-  {
     "label": "Instruction steps",
     "entity": "step",
     "field": {

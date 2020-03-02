@@ -42,14 +42,14 @@
   {
     "label": "Cover picture",
     "name": "cover",
-    "type": "image",
-    "optional": true
-  },
-  {
-    "label": "Picture alternative text",
-    "name": "cover_alt",
-    "type": "text",
-    "optional": true
+    "type": "library",
+    "options": [
+      "H5P.Image 1.1"
+    ],
+    "default": {
+      "library": "H5P.Image 1.1",
+      "params": {}
+    }
   },
   {
     "label": "Instruction steps",

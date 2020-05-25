@@ -1,0 +1,94 @@
+[ 
+  {
+    "label": "Juhendi pealkiri",
+    "default": "Kuidas mingit asja teha",
+    "description": "Anna juhendile lihtsasti arusaadav pealkiri. Seda pealkirja näidatakse tiitellehel."
+  },
+  { 
+    "label": "Juhendi kirjeldus",
+    "default": "Täida ülesandeid järjekorras, milles nad ilmuvad.", 
+    "description": "Kirjelda, kuidas kasutajad peaksid juhendit järgima."
+  }, 
+  {
+    "label": "Raskusaste",
+    "options": [
+      {
+        "label": "Raske"
+      },
+      {
+        "label": "Keskmine"
+      },
+      {
+        "label": "Lihtne"
+      }
+    ]
+  },
+  {
+    "label": "Aega",
+    "description": "Aeg, mis kulub juhiste täitmiseks. Näiteks: \"15 minutit\", \"2 tundi\".",
+    "default": "30 min"
+  },
+  {
+    "label": "Kaanepilt"
+  },
+  {
+    "label": "Juhendi sammud",
+    "entity": "samm",
+    "field": {
+      "label": "Samm",
+      "fields": [
+        {
+          "label": "Pealkiri",
+          "description": "Sammu pealkiri"
+        },
+        {
+          "label": "Märkmed",
+          "entity": "märge",
+          "field": {
+            "label": "Märge",
+            "fields": [
+              {
+                "label": "Tekst"
+              },
+              {
+                "label": "Eriline tähelepanu"
+              }
+            ]
+          }
+        },
+        {
+          "label": "Pilt või video",
+          "description": "Kasuta kas pilti või videot, et näidata, mida selles sammus teha."
+        }
+      ]
+    }
+  },
+  {
+    "label": "Tekst alustamise nupu jaoks",
+    "default": "Alusta"
+  },
+  {
+    "label": "Tekst eelmisele sammule minemise nupu jaoks",
+    "default": "Eelmine"
+  },
+  {
+    "label": "Tekst järgmisele sammule minemise nupu jaoks",
+    "default": "Järgmine"
+  },
+  {
+    "label": "Tekst raskusastme jaoks",
+    "default": "Raskusaste"
+  },
+  {
+    "label": "Tekst sammude jaoks",
+    "default": "Samme"
+  },
+  {
+    "label": "Tekst aja jaoks",
+    "default": "Aeg"
+  },
+  {
+    "label": "Tekst iga sammu jaoks. @step asendatakse sammu järjenumbriga.",
+    "default": "@step. samm: "
+  }
+]
